@@ -1,0 +1,46 @@
+﻿
+@model IEnumerable<EmployeeManagement.Models.Employee>
+@{
+    ViewBag.Title = "Employees";
+}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/additional-methods.min.js"></script>
+
+
+<h2>Employees</h2>
+
+<p><a href="@Url.Action("Create")" class="btn btn-success">Create New (AJAX)</a></p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Dept</th>
+            <th>Salary</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody id="empBody">
+        @foreach (var e in Model)
+        {
+            <tr>
+                <td>@e.Id</td>
+                <td>@e.Name</td>
+                <td>@e.Email</td>
+                <td>@e.Department</td>
+                <td>@e.Salary</td>
+                <td>
+                    <a href="@Url.Action("Edit", new {id = e.Id})" class="btn btn-sm btn-primary">Edit</a>
+                    <a href="@Url.Action("Delete", new {id = e.Id})" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
